@@ -1,9 +1,10 @@
 import os
+from tkinter import filedialog, messagebox
 
-from tkinter import filedialog
+import slide_anuncio
 
 
-def selecionar_arquivo():
+def selecionar_arquivo(root):
     # Define o caminho padrão expandindo o $USER atual do sistema de forma segura
     # No Linux/Mac, isso aponta para /home/usuario/Documentos (ou Documentos com "D" maiúsculo)
     diretorio_padrao = os.path.expanduser("~/Documentos")
@@ -22,6 +23,17 @@ def selecionar_arquivo():
     )
 
     if arquivo:  # Se o usuário não cancelar
-        return arquivo
+        carregar_texto(root, arquivo)
     else:
-        return ""
+        carregar_texto(root, "")
+
+
+def carregar_texto(root, arquivo):
+
+    if os.path.isfile(arquivo):
+        with open(arquivo, "r", encoding="utf-8") as f:
+            texto = f.read()
+            paragrafo = [p.strip() for p in texto.split("\n\n") if p.strip()]
+            slide_anuncio.iniciar_apresentacao(root, paragrafo)
+    else:
+        messagebox.showerror("Erro", f"Arquivo não encontrado: {arquivo}")

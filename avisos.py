@@ -1,5 +1,5 @@
 import tkinter as tk
-import argparse, funcionalidades, slide_anuncio
+import argparse, funcionalidades
 
 VERSION='1.0.0'
 class Avisos:
@@ -23,7 +23,7 @@ class Avisos:
         linha += 1
 
         self.carregar_arquivo_btn=tk.Button(self.root, text='Carregar Arquivo',
-                                            command=lambda: slide_anuncio.iniciar_apresentacao(root, funcionalidades.selecionar_arquivo()))
+                                            command=lambda: funcionalidades.selecionar_arquivo(root))
         self.carregar_arquivo_btn.grid(row=linha, column=1, padx=5, pady=5)
 
 
