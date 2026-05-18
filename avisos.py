@@ -25,6 +25,11 @@ class Avisos:
         self.carregar_arquivo_btn=tk.Button(self.root, text='Carregar Arquivo',
                                             command=lambda: funcionalidades.selecionar_arquivo(root))
         self.carregar_arquivo_btn.grid(row=linha, column=1, padx=5, pady=5)
+        linha += 1
+
+        self.receber_texto_btn = tk.Button(self.root, text='Receber Texto',
+                                           command=lambda:  funcionalidades.carrgar_bot(root))
+        self.receber_texto_btn.grid(row=linha, column=1, padx=5, pady=5)
 
 
 if __name__ == '__main__':
