@@ -23,18 +23,18 @@ def selecionar_arquivo(root):
     )
 
     if arquivo:  # Se o usuário não cancelar
-        carregar_texto(root, arquivo)
+        carregar_texto(arquivo)
     else:
-        carregar_texto(root, "")
+        carregar_texto("")
 
 
-def carregar_texto(root, arquivo):
+def carregar_texto(arquivo):
 
     if os.path.isfile(arquivo):
         with open(arquivo, "r", encoding="utf-8") as f:
             texto = f.read()
             #paragrafo = [p.strip() for p in texto.split("\n\n") if p.strip()]
-            slide_anuncio.iniciar_apresentacao(root, texto)
+            slide_anuncio.iniciar_apresentacao(texto)
     else:
         messagebox.showerror("Erro", f"Arquivo não encontrado: {arquivo}")
 
