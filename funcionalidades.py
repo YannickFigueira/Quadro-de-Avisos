@@ -33,8 +33,12 @@ def carregar_texto(arquivo):
     if os.path.isfile(arquivo):
         with open(arquivo, "r", encoding="utf-8") as f:
             texto = f.read()
-            #paragrafo = [p.strip() for p in texto.split("\n\n") if p.strip()]
-            slide_anuncio.iniciar_apresentacao(texto)
+            paragrafo = [p.strip() for p in texto.split("\n\n") if p.strip()]
+            texto_indet = ""
+            for i in range (len(paragrafo)):
+                texto_indet += f"    {paragrafo[i]}\n\n"
+            print(texto_indet)
+            slide_anuncio.iniciar_apresentacao(texto_indet)
     else:
         messagebox.showerror("Erro", f"Arquivo não encontrado: {arquivo}")
 
